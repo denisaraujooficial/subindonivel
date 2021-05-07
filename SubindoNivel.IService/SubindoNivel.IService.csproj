@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\SubindoNivel.Common\SubindoNivel.Common.csproj" />
     <ProjectReference Include="..\SubindoNivel.Entity\SubindoNivel.Entity.csproj" />
   </ItemGroup>
 

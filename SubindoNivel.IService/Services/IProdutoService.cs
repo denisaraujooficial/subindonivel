@@ -3,8 +3,8 @@ using SubindoNivel.Entity.Entities;
 
 namespace SubindoNivel.IService.Services
 {
-    public interface IPessoaService : IServiceConfiguration
+    public interface IProdutoService : IServiceConfiguration
     {
-        Pessoa ObterPorId(int idPessoa);
+        Produto ObterPorId(int idProduto);
     }
 }
