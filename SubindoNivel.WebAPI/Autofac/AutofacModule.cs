@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using Autofac.Extras.DynamicProxy;
+using Microsoft.Extensions.Logging;
 using SubindoNivel.IService.Services;
 using SubindoNivel.Service.Services;
 using SubindoNivel.WebAPI.Autofac.Interceptors;
@@ -23,7 +24,9 @@ namespace SubindoNivel.WebAPI.Autofac
                 .EnableInterfaceInterceptors()
                 .InterceptedBy(typeof(LoggerInterceptor));
 
-            //builder.Register(c => new CallLogger());
+            builder.RegisterGeneric(typeof(Logger<>))
+                   .As(typeof(ILogger<>))
+                   .SingleInstance();
             builder.RegisterType<LoggerInterceptor>();
         }
     }

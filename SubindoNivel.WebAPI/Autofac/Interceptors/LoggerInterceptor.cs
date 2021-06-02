@@ -1,23 +1,24 @@
 ﻿using Castle.DynamicProxy;
+using Microsoft.Extensions.Logging;
 
 namespace SubindoNivel.WebAPI.Autofac.Interceptors
 {
     public class LoggerInterceptor : IInterceptor
     {
-        //private readonly ILogger logger;
+        private readonly ILogger<LoggerInterceptor> logger;
 
-        //public CallLogger(ILogger logger)
-        //{
-        //    this.logger = logger;
-        //}
+        public LoggerInterceptor(ILogger<LoggerInterceptor> logger)
+        {
+            this.logger = logger;
+        }
 
         public void Intercept(IInvocation invocation)
         {
-            // Qualquer coisa antes de chamar o método
+            logger.LogInformation($"MÉTODO: {invocation.Method.Name}");
 
             invocation.Proceed();
 
-            // Qualquer coisa depois de chamar o método
+            logger.LogInformation($"RETORNO: {invocation.ReturnValue}");
         }
     }
 }
