@@ -1,3 +1,5 @@
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -10,6 +12,7 @@ using SubindoNivel.Common.Configuration;
 using SubindoNivel.Common.Services;
 using SubindoNivel.IService.Services;
 using SubindoNivel.Service.Services;
+using SubindoNivel.WebAPI.Autofac;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -37,15 +40,13 @@ namespace SubindoNivel.WebAPI
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "SubindoNivel.WebAPI", Version = "v1" });
             });
 
-            LoadAssemblies();
+            //LoadAssemblies();
 
-            var assemblies = GetAssemblies();
+            //var assemblies = GetAssemblies();
 
-            RegisterProjectConfigurations(services, assemblies);
+            //RegisterProjectConfigurations(services, assemblies);
 
-            RegisterServices(services, assemblies);
-
-            int i = 0;
+            //RegisterServices(services, assemblies);
 
             //reflaction - Adicionar dinamicamente os services
             //Interceptador
@@ -54,6 +55,11 @@ namespace SubindoNivel.WebAPI
 
             //Castle
             //SimpleInjector
+        }
+
+        public void ConfigureContainer(ContainerBuilder builder)
+        {
+            builder.RegisterModule(new AutofacModule());
         }
 
         private static void LoadAssemblies()

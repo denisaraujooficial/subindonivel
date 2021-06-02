@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SubindoNivel.Entity.Entities;
 using SubindoNivel.IService.Services;
-using SubindoNivel.Common.Extensions;
-using System;
 
 namespace SubindoNivel.WebAPI.Controllers
 {
