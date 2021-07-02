@@ -1,5 +1,8 @@
 ﻿using Autofac;
+using SubindoNivel.Common.Configuration;
 using SubindoNivel.Common.Services;
+using SubindoNivel.Entity.Entities;
+using SubindoNivel.IRepository.Repositories;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -18,12 +21,17 @@ namespace SubindoNivel.WebAPI
             foreach (var a in assemblies)
             {
                 builder.RegisterAssemblyTypes(a)
-                   .AssignableTo<IServiceConfiguration>()
+                   .AssignableTo<IServiceConfiguration>()                   
                    .AsImplementedInterfaces()
                    .InstancePerLifetimeScope();
-            }
 
-        }
+                builder.RegisterAssemblyTypes(a)                   
+                   .AssignableTo<IRepositoryConfiguration>()
+                   .AsImplementedInterfaces()
+                   .InstancePerLifetimeScope();
+            }           
+
+        }       
 
         private static void LoadAssemblies()
         {

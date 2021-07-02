@@ -7,6 +7,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using SubindoNivel.Common.Configuration;
 using SubindoNivel.Common.Services;
+using SubindoNivel.WebAPI.Extensions;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -33,6 +34,10 @@ namespace SubindoNivel.WebAPI
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "SubindoNivel.WebAPI", Version = "v1" });
             });
 
+            var connection = Configuration.GetConnectionString("connection");
+
+            services.AddNHibernate(connection);
+
             //LoadAssemblies();
 
             //var assemblies = GetAssemblies();
@@ -40,7 +45,7 @@ namespace SubindoNivel.WebAPI
             //RegisterProjectConfigurations(services, assemblies);
 
             //RegisterServices(services, assemblies);           
-            
+
         }
         public void ConfigureContainer(ContainerBuilder builder)
         {

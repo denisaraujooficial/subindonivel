@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentNHibernate" Version="3.1.0" />
+    <PackageReference Include="NHibernate" Version="5.3.8" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SubindoNivel.Entity\SubindoNivel.Entity.csproj" />
+    <ProjectReference Include="..\SubindoNivel.IRepository\SubindoNivel.IRepository.csproj" />
+  </ItemGroup>
+
+</Project>
